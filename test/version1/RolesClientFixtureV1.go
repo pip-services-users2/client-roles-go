@@ -22,7 +22,7 @@ func NewRolesClientFixtureV1(client version1.IRolesClientV1) *RolesClientFixture
 }
 
 func (c *RolesClientFixtureV1) clear() {
-	page, _ := c.Client.GetRolesByFilter(context.Background(), "", *data.NewEmptyFilterParams(), *data.NewEmptyPagingParams())
+	page, _ := c.Client.GetRolesByFilter(context.Background(), "", data.NewEmptyFilterParams(), data.NewEmptyPagingParams())
 	for _, roles := range page.Data {
 		c.Client.RevokeRoles(context.Background(), "", roles.Id, roles.Roles)
 	}
@@ -45,7 +45,7 @@ func (c *RolesClientFixtureV1) TestGetAndSetRoles(t *testing.T) {
 	assert.True(t, len(roles) == 3)
 
 	// Get roles by filter
-	page, err1 := c.Client.GetRolesByFilter(context.Background(), "", *data.NewFilterParamsFromTuples("roles", ROLES), *data.NewEmptyPagingParams())
+	page, err1 := c.Client.GetRolesByFilter(context.Background(), "", data.NewFilterParamsFromTuples("roles", ROLES), data.NewEmptyPagingParams())
 	assert.Nil(t, err1)
 
 	assert.NotNil(t, page)

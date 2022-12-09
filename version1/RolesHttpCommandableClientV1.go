@@ -19,8 +19,8 @@ func NewRolesHttpCommandableClientV1() *RolesHttpCommandableClientV1 {
 	return c
 }
 
-func (c *RolesHttpCommandableClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter data.FilterParams,
-	paging data.PagingParams) (result cdata.DataPage[*UserRolesV1], err error) {
+func (c *RolesHttpCommandableClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
+	paging *data.PagingParams) (result cdata.DataPage[*UserRolesV1], err error) {
 
 	params := cdata.NewAnyValueMapFromTuples(
 		"filter", filter,

@@ -21,8 +21,8 @@ func NewRolesMemoryClientV1() *RolesMemoryClientV1 {
 	return &c
 }
 
-func (c *RolesMemoryClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter data.FilterParams,
-	paging data.PagingParams) (result data.DataPage[*UserRolesV1], err error) {
+func (c *RolesMemoryClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
+	paging *data.PagingParams) (result data.DataPage[*UserRolesV1], err error) {
 
 	var total int64 = (int64)(len(c.roles))
 	items := make([]*UserRolesV1, 0)

@@ -18,8 +18,8 @@ func NewRoleGrpcClientV1() *RoleGrpcClientV1 {
 	}
 }
 
-func (c *RoleGrpcClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter data.FilterParams,
-	paging data.PagingParams) (result data.DataPage[*UserRolesV1], err error) {
+func (c *RoleGrpcClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
+	paging *data.PagingParams) (result data.DataPage[*UserRolesV1], err error) {
 	timing := c.Instrument(ctx, correlationId, "roles_v1.get_roles_by_filter")
 	defer timing.EndTiming(ctx, err)
 
@@ -27,12 +27,16 @@ func (c *RoleGrpcClientV1) GetRolesByFilter(ctx context.Context, correlationId s
 		CorrelationId: correlationId,
 	}
 
-	req.Filter = filter.Value()
+	if filter != nil {
+		req.Filter = filter.Value()
+	}
 
-	req.Paging = &protos.PagingParams{
-		Skip:  paging.GetSkip(0),
-		Take:  (int32)(paging.GetTake(100)),
-		Total: paging.Total,
+	if paging != nil {
+		req.Paging = &protos.PagingParams{
+			Skip:  paging.GetSkip(0),
+			Take:  (int32)(paging.GetTake(100)),
+			Total: paging.Total,
+		}
 	}
 
 	reply := new(protos.RolesPageReply)

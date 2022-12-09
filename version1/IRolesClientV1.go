@@ -7,8 +7,8 @@ import (
 )
 
 type IRolesClientV1 interface {
-	GetRolesByFilter(ctx context.Context, correlationId string, filter data.FilterParams,
-		paging data.PagingParams) (result data.DataPage[*UserRolesV1], err error)
+	GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
+		paging *data.PagingParams) (result data.DataPage[*UserRolesV1], err error)
 
 	GetRolesById(ctx context.Context, correlationId string, userId string) (result []string, err error)
 
