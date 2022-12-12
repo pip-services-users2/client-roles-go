@@ -1,9 +1,9 @@
 package build
 
 import (
+	clients1 "github.com/pip-services-users2/client-roles-go/version1"
 	cref "github.com/pip-services3-gox/pip-services3-commons-gox/refer"
 	cbuild "github.com/pip-services3-gox/pip-services3-components-gox/build"
-	clients1 "github.com/service-users/client-roles-go/version1"
 )
 
 type RolesClientFactory struct {

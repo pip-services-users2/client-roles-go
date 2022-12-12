@@ -1,4 +1,4 @@
-module github.com/service-users/client-roles-go
+module github.com/pip-services-users2/client-roles-go
 
 go 1.18
 

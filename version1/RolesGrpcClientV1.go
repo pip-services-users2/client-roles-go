@@ -3,9 +3,9 @@ package version1
 import (
 	"context"
 
+	"github.com/pip-services-users2/client-roles-go/protos"
 	"github.com/pip-services3-gox/pip-services3-commons-gox/data"
 	"github.com/pip-services3-gox/pip-services3-grpc-gox/clients"
-	"github.com/service-users/client-roles-go/protos"
 )
 
 type RoleGrpcClientV1 struct {

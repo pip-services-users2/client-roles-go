@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
+	"github.com/pip-services-users2/client-roles-go/version1"
 	"github.com/pip-services3-gox/pip-services3-commons-gox/config"
-	"github.com/service-users/client-roles-go/version1"
 )
 
 type rolesGrpcCommandableClientV1Test struct {

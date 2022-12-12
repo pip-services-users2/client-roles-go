@@ -3,10 +3,10 @@ package version1
 import (
 	"encoding/json"
 
+	"github.com/pip-services-users2/client-roles-go/protos"
 	"github.com/pip-services3-gox/pip-services3-commons-gox/convert"
 	"github.com/pip-services3-gox/pip-services3-commons-gox/data"
 	"github.com/pip-services3-gox/pip-services3-commons-gox/errors"
-	"github.com/service-users/client-roles-go/protos"
 )
 
 func fromError(err error) *protos.ErrorDescription {

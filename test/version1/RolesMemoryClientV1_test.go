@@ -3,7 +3,7 @@ package test_version1
 import (
 	"testing"
 
-	"github.com/service-users/client-roles-go/version1"
+	"github.com/pip-services-users2/client-roles-go/version1"
 )
 
 type rolesMemoryClientV1Test struct {
