@@ -9,16 +9,16 @@ import (
 	"github.com/pip-services3-gox/pip-services3-commons-gox/config"
 )
 
-type rolesGrpcClientV1Test struct {
-	client  *version1.RoleGrpcClientV1
+type rolesGrpcCommandableClientV1Test struct {
+	client  *version1.RolesCommandableGrpcClientV1
 	fixture *RolesClientFixtureV1
 }
 
-func newRolesGrpcClientV1Test() *rolesGrpcClientV1Test {
-	return &rolesGrpcClientV1Test{}
+func newRolesGrpcCommandableClientV1Test() *rolesGrpcCommandableClientV1Test {
+	return &rolesGrpcCommandableClientV1Test{}
 }
 
-func (c *rolesGrpcClientV1Test) setup(t *testing.T) *RolesClientFixtureV1 {
+func (c *rolesGrpcCommandableClientV1Test) setup(t *testing.T) *RolesClientFixtureV1 {
 	var GRPC_HOST = os.Getenv("GRPC_HOST")
 	if GRPC_HOST == "" {
 		GRPC_HOST = "localhost"
@@ -34,7 +34,7 @@ func (c *rolesGrpcClientV1Test) setup(t *testing.T) *RolesClientFixtureV1 {
 		"connection.port", GRPC_PORT,
 	)
 
-	c.client = version1.NewRoleGrpcClientV1()
+	c.client = version1.NewRolesCommandableGrpcClientV1()
 	c.client.Configure(context.Background(), httpConfig)
 	c.client.Open(context.Background(), "")
 
@@ -43,28 +43,28 @@ func (c *rolesGrpcClientV1Test) setup(t *testing.T) *RolesClientFixtureV1 {
 	return c.fixture
 }
 
-func (c *rolesGrpcClientV1Test) teardown(t *testing.T) {
+func (c *rolesGrpcCommandableClientV1Test) teardown(t *testing.T) {
 	c.client.Close(context.Background(), "")
 }
 
-func TestGetAndSetRoles(t *testing.T) {
-	c := newRolesGrpcClientV1Test()
+func TestCommandableGetAndSetRoles(t *testing.T) {
+	c := newRolesGrpcCommandableClientV1Test()
 	fixture := c.setup(t)
 	defer c.teardown(t)
 
 	fixture.TestGetAndSetRoles(t)
 }
 
-func TestGrantAndRevokeRoles(t *testing.T) {
-	c := newRolesGrpcClientV1Test()
+func TestCommandableGrantAndRevokeRoles(t *testing.T) {
+	c := newRolesGrpcCommandableClientV1Test()
 	fixture := c.setup(t)
 	defer c.teardown(t)
 
 	fixture.TestGrantAndRevokeRoles(t)
 }
 
-func TestAuthorize(t *testing.T) {
-	c := newRolesGrpcClientV1Test()
+func TestCommandableAuthorize(t *testing.T) {
+	c := newRolesGrpcCommandableClientV1Test()
 	fixture := c.setup(t)
 	defer c.teardown(t)
 
