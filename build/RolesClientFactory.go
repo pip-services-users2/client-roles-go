@@ -15,16 +15,18 @@ func NewRolesClientFactory() *RolesClientFactory {
 		Factory: *cbuild.NewFactory(),
 	}
 
-	// nullClientDescriptor := cref.NewDescriptor("service-roles", "client", "null", "*", "1.0")
+	nullClientDescriptor := cref.NewDescriptor("service-roles", "client", "null", "*", "1.0")
 	// directClientDescriptor := cref.NewDescriptor("service-roles", "client", "direct", "*", "1.0")
 	cmdHttpClientDescriptor := cref.NewDescriptor("service-roles", "client", "commandable-http", "*", "1.0")
 	grpcClientDescriptor := cref.NewDescriptor("service-roles", "client", "grpc", "*", "1.0")
+	commandableGrpcClientDescriptor := cref.NewDescriptor("service-roles", "client", "commandable-grpc", "*", "1.0")
 	memoryClientDescriptor := cref.NewDescriptor("service-roles", "client", "memory", "*", "1.0")
 
-	// c.RegisterType(nullClientDescriptor, clients1.NewRolesNullClientV1)
+	c.RegisterType(nullClientDescriptor, clients1.NewRolesNullClientV1)
 	// c.RegisterType(directClientDescriptor, clients1.NewRolesDirectClientV1)
-	c.RegisterType(cmdHttpClientDescriptor, clients1.NewRolesHttpCommandableClientV1)
+	c.RegisterType(cmdHttpClientDescriptor, clients1.NewRolesCommandableHttpClientV1)
 	c.RegisterType(grpcClientDescriptor, clients1.NewRoleGrpcClientV1)
+	c.RegisterType(commandableGrpcClientDescriptor, clients1.NewRolesCommandableGrpcClientV1)
 	c.RegisterType(memoryClientDescriptor, clients1.NewRolesMemoryClientV1)
 
 	return c

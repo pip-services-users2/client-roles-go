@@ -9,6 +9,10 @@ import (
 type RolesNullClientV1 struct {
 }
 
+func NewRolesNullClientV1() *RolesNullClientV1 {
+	return &RolesNullClientV1{}
+}
+
 func (c *RolesNullClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams, paging *data.PagingParams) (result data.DataPage[*UserRolesV1], err error) {
 	return *data.NewEmptyDataPage[*UserRolesV1](), nil
 }

@@ -8,18 +8,18 @@ import (
 	cclients "github.com/pip-services3-gox/pip-services3-rpc-gox/clients"
 )
 
-type RolesHttpCommandableClientV1 struct {
+type RolesCommandableHttpClientV1 struct {
 	*cclients.CommandableHttpClient
 }
 
-func NewRolesHttpCommandableClientV1() *RolesHttpCommandableClientV1 {
-	c := &RolesHttpCommandableClientV1{
+func NewRolesCommandableHttpClientV1() *RolesCommandableHttpClientV1 {
+	c := &RolesCommandableHttpClientV1{
 		CommandableHttpClient: cclients.NewCommandableHttpClient("v1/roles"),
 	}
 	return c
 }
 
-func (c *RolesHttpCommandableClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
+func (c *RolesCommandableHttpClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
 	paging *data.PagingParams) (result cdata.DataPage[*UserRolesV1], err error) {
 
 	params := cdata.NewAnyValueMapFromTuples(
@@ -35,7 +35,7 @@ func (c *RolesHttpCommandableClientV1) GetRolesByFilter(ctx context.Context, cor
 	return cclients.HandleHttpResponse[cdata.DataPage[*UserRolesV1]](res, correlationId)
 }
 
-func (c *RolesHttpCommandableClientV1) GetRolesById(ctx context.Context, correlationId string, userId string) (result []string, err error) {
+func (c *RolesCommandableHttpClientV1) GetRolesById(ctx context.Context, correlationId string, userId string) (result []string, err error) {
 	params := cdata.NewAnyValueMapFromTuples(
 		"user_id", userId,
 	)
@@ -48,7 +48,7 @@ func (c *RolesHttpCommandableClientV1) GetRolesById(ctx context.Context, correla
 	return cclients.HandleHttpResponse[[]string](res, correlationId)
 }
 
-func (c *RolesHttpCommandableClientV1) SetRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
+func (c *RolesCommandableHttpClientV1) SetRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
 
 	params := cdata.NewAnyValueMapFromTuples(
 		"user_id", userId,
@@ -63,7 +63,7 @@ func (c *RolesHttpCommandableClientV1) SetRoles(ctx context.Context, correlation
 	return cclients.HandleHttpResponse[[]string](res, correlationId)
 }
 
-func (c *RolesHttpCommandableClientV1) GrantRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
+func (c *RolesCommandableHttpClientV1) GrantRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
 
 	params := cdata.NewAnyValueMapFromTuples(
 		"user_id", userId,
@@ -78,7 +78,7 @@ func (c *RolesHttpCommandableClientV1) GrantRoles(ctx context.Context, correlati
 	return cclients.HandleHttpResponse[[]string](res, correlationId)
 }
 
-func (c *RolesHttpCommandableClientV1) RevokeRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
+func (c *RolesCommandableHttpClientV1) RevokeRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
 
 	params := cdata.NewAnyValueMapFromTuples(
 		"user_id", userId,
@@ -93,7 +93,7 @@ func (c *RolesHttpCommandableClientV1) RevokeRoles(ctx context.Context, correlat
 	return cclients.HandleHttpResponse[[]string](res, correlationId)
 }
 
-func (c *RolesHttpCommandableClientV1) Authorize(ctx context.Context, correlationId string, userId string, roles []string) (result bool, err error) {
+func (c *RolesCommandableHttpClientV1) Authorize(ctx context.Context, correlationId string, userId string, roles []string) (result bool, err error) {
 
 	params := cdata.NewAnyValueMapFromTuples(
 		"user_id", userId,

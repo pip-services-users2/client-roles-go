@@ -9,16 +9,16 @@ import (
 	"github.com/pip-services3-gox/pip-services3-commons-gox/config"
 )
 
-type rolesHttpCommandableClientV1Test struct {
-	client  *version1.RolesHttpCommandableClientV1
+type RolesCommandableHttpClientV1Test struct {
+	client  *version1.RolesCommandableHttpClientV1
 	fixture *RolesClientFixtureV1
 }
 
-func newRolesHttpCommandableClientV1Test() *rolesHttpCommandableClientV1Test {
-	return &rolesHttpCommandableClientV1Test{}
+func newRolesCommandableHttpClientV1Test() *RolesCommandableHttpClientV1Test {
+	return &RolesCommandableHttpClientV1Test{}
 }
 
-func (c *rolesHttpCommandableClientV1Test) setup(t *testing.T) *RolesClientFixtureV1 {
+func (c *RolesCommandableHttpClientV1Test) setup(t *testing.T) *RolesClientFixtureV1 {
 	var HTTP_HOST = os.Getenv("HTTP_HOST")
 	if HTTP_HOST == "" {
 		HTTP_HOST = "localhost"
@@ -34,7 +34,7 @@ func (c *rolesHttpCommandableClientV1Test) setup(t *testing.T) *RolesClientFixtu
 		"connection.port", HTTP_PORT,
 	)
 
-	c.client = version1.NewRolesHttpCommandableClientV1()
+	c.client = version1.NewRolesCommandableHttpClientV1()
 	c.client.Configure(context.Background(), httpConfig)
 	c.client.Open(context.Background(), "")
 
@@ -43,12 +43,12 @@ func (c *rolesHttpCommandableClientV1Test) setup(t *testing.T) *RolesClientFixtu
 	return c.fixture
 }
 
-func (c *rolesHttpCommandableClientV1Test) teardown(t *testing.T) {
+func (c *RolesCommandableHttpClientV1Test) teardown(t *testing.T) {
 	c.client.Close(context.Background(), "")
 }
 
 func TestHttpGetAndSetRoles(t *testing.T) {
-	c := newRolesHttpCommandableClientV1Test()
+	c := newRolesCommandableHttpClientV1Test()
 	fixture := c.setup(t)
 	defer c.teardown(t)
 
@@ -56,7 +56,7 @@ func TestHttpGetAndSetRoles(t *testing.T) {
 }
 
 func TestHttpGrantAndRevokeRoles(t *testing.T) {
-	c := newRolesHttpCommandableClientV1Test()
+	c := newRolesCommandableHttpClientV1Test()
 	fixture := c.setup(t)
 	defer c.teardown(t)
 
@@ -64,7 +64,7 @@ func TestHttpGrantAndRevokeRoles(t *testing.T) {
 }
 
 func TestHttpAuthorize(t *testing.T) {
-	c := newRolesHttpCommandableClientV1Test()
+	c := newRolesCommandableHttpClientV1Test()
 	fixture := c.setup(t)
 	defer c.teardown(t)
 
