@@ -27,7 +27,7 @@ func NewRolesClientFactory() *RolesClientFactory {
 	c.RegisterType(cmdHttpClientDescriptor, clients1.NewRolesCommandableHttpClientV1)
 	c.RegisterType(grpcClientDescriptor, clients1.NewRoleGrpcClientV1)
 	c.RegisterType(commandableGrpcClientDescriptor, clients1.NewRolesCommandableGrpcClientV1)
-	c.RegisterType(memoryClientDescriptor, clients1.NewRolesMemoryClientV1)
+	c.RegisterType(memoryClientDescriptor, clients1.NewRolesMockClientV1)
 
 	return c
 }

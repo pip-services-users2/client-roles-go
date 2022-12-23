@@ -9,19 +9,19 @@ import (
 	cdata "github.com/pip-services3-gox/pip-services3-commons-gox/data"
 )
 
-type RolesMemoryClientV1 struct {
+type RolesMockClientV1 struct {
 	roles []UserRolesV1
 }
 
-func NewRolesMemoryClientV1() *RolesMemoryClientV1 {
+func NewRolesMockClientV1() *RolesMockClientV1 {
 
-	c := RolesMemoryClientV1{
+	c := RolesMockClientV1{
 		roles: make([]UserRolesV1, 0),
 	}
 	return &c
 }
 
-func (c *RolesMemoryClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
+func (c *RolesMockClientV1) GetRolesByFilter(ctx context.Context, correlationId string, filter *data.FilterParams,
 	paging *data.PagingParams) (result data.DataPage[*UserRolesV1], err error) {
 
 	var total int64 = (int64)(len(c.roles))
@@ -33,7 +33,7 @@ func (c *RolesMemoryClientV1) GetRolesByFilter(ctx context.Context, correlationI
 	return *cdata.NewDataPage(items, int(total)), nil
 }
 
-func (c *RolesMemoryClientV1) GetRolesById(ctx context.Context, correlationId string, userId string) (result []string, err error) {
+func (c *RolesMockClientV1) GetRolesById(ctx context.Context, correlationId string, userId string) (result []string, err error) {
 
 	result = make([]string, 0)
 	for _, v := range c.roles {
@@ -46,7 +46,7 @@ func (c *RolesMemoryClientV1) GetRolesById(ctx context.Context, correlationId st
 
 }
 
-func (c *RolesMemoryClientV1) SetRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
+func (c *RolesMockClientV1) SetRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
 
 	var userRoles UserRolesV1
 	var index = -1
@@ -69,7 +69,7 @@ func (c *RolesMemoryClientV1) SetRoles(ctx context.Context, correlationId string
 	return roles, nil
 }
 
-func (c *RolesMemoryClientV1) GrantRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
+func (c *RolesMockClientV1) GrantRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
 	// If there are no roles then skip processing
 	if len(roles) == 0 {
 		return nil, nil
@@ -92,7 +92,7 @@ func (c *RolesMemoryClientV1) GrantRoles(ctx context.Context, correlationId stri
 
 }
 
-func (c *RolesMemoryClientV1) RevokeRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
+func (c *RolesMockClientV1) RevokeRoles(ctx context.Context, correlationId string, userId string, roles []string) (result []string, err error) {
 	// If there are no roles then skip processing
 	if len(roles) == 0 {
 		return nil, nil
@@ -116,7 +116,7 @@ func (c *RolesMemoryClientV1) RevokeRoles(ctx context.Context, correlationId str
 
 }
 
-func (c *RolesMemoryClientV1) Authorize(ctx context.Context, correlationId string, userId string, roles []string) (result bool, err error) {
+func (c *RolesMockClientV1) Authorize(ctx context.Context, correlationId string, userId string, roles []string) (result bool, err error) {
 	// If there are no roles then skip processing
 	if len(roles) == 0 {
 		return false, nil
@@ -137,7 +137,7 @@ func (c *RolesMemoryClientV1) Authorize(ctx context.Context, correlationId strin
 
 }
 
-func (c *RolesMemoryClientV1) contains(array1 []string, array2 []string) bool {
+func (c *RolesMockClientV1) contains(array1 []string, array2 []string) bool {
 	if array1 == nil || array2 == nil {
 		return false
 	}
@@ -153,7 +153,7 @@ func (c *RolesMemoryClientV1) contains(array1 []string, array2 []string) bool {
 	return false
 }
 
-func (c *RolesMemoryClientV1) composeFilter(filter *cdata.FilterParams) func(item UserRolesV1) bool {
+func (c *RolesMockClientV1) composeFilter(filter *cdata.FilterParams) func(item UserRolesV1) bool {
 	if filter == nil {
 		filter = cdata.NewEmptyFilterParams()
 	}
@@ -209,7 +209,7 @@ func (c *RolesMemoryClientV1) composeFilter(filter *cdata.FilterParams) func(ite
 
 }
 
-func (c *RolesMemoryClientV1) union(a, b []string) []string {
+func (c *RolesMockClientV1) union(a, b []string) []string {
 	m := make(map[string]bool)
 
 	for _, item := range a {
@@ -225,7 +225,7 @@ func (c *RolesMemoryClientV1) union(a, b []string) []string {
 }
 
 // Set Difference: A - B
-func (c *RolesMemoryClientV1) difference(a, b []string) (diff []string) {
+func (c *RolesMockClientV1) difference(a, b []string) (diff []string) {
 	m := make(map[string]bool)
 
 	for _, item := range b {
