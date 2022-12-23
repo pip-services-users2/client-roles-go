@@ -20,14 +20,14 @@ func NewRolesClientFactory() *RolesClientFactory {
 	cmdHttpClientDescriptor := cref.NewDescriptor("service-roles", "client", "commandable-http", "*", "1.0")
 	grpcClientDescriptor := cref.NewDescriptor("service-roles", "client", "grpc", "*", "1.0")
 	commandableGrpcClientDescriptor := cref.NewDescriptor("service-roles", "client", "commandable-grpc", "*", "1.0")
-	memoryClientDescriptor := cref.NewDescriptor("service-roles", "client", "memory", "*", "1.0")
+	mockClientDescriptor := cref.NewDescriptor("service-roles", "client", "mock", "*", "1.0")
 
 	c.RegisterType(nullClientDescriptor, clients1.NewRolesNullClientV1)
 	// c.RegisterType(directClientDescriptor, clients1.NewRolesDirectClientV1)
 	c.RegisterType(cmdHttpClientDescriptor, clients1.NewRolesCommandableHttpClientV1)
 	c.RegisterType(grpcClientDescriptor, clients1.NewRoleGrpcClientV1)
 	c.RegisterType(commandableGrpcClientDescriptor, clients1.NewRolesCommandableGrpcClientV1)
-	c.RegisterType(memoryClientDescriptor, clients1.NewRolesMockClientV1)
+	c.RegisterType(mockClientDescriptor, clients1.NewRolesMockClientV1)
 
 	return c
 }
